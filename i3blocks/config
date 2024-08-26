@@ -1,0 +1,14 @@
+[time]
+command=date +%T
+interval=60
+color=$bg
+
+[ip]
+command=ip a | grep -o -P '(?<=inet ).*(?= brd)'
+interval=once
+color=$bg
+
+[battery]
+command=acpi | grep -o -P '(?<=Discharging, ).*(?=,)'
+label=⚡
+interval=30

@@ -1,0 +1,12 @@
+/**
+ * @author      : caps
+ * @created     : {{TODAY}}
+ * @filename    : {{FILEE}}
+ */
+
+#ifndef {{MACRO_GUARD}}
+#define {{MACRO_GUARD}}
+
+
+
+#endif
