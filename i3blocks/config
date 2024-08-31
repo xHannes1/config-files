@@ -9,6 +9,6 @@ interval=once
 color=$bg
 
 [battery]
-command=acpi | grep -o -P '(?<=Discharging, ).*(?=,)'
+command=acpi | grep -o -P '(?<=ing, ).*(?=,)' 
 label=⚡
-interval=30
+interval=60
