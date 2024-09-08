@@ -4,11 +4,11 @@ let g:tmpl_search_paths = ['~/.config/nvim/templates']
 
 call plug#begin()
 Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'https://github.com/preservim/nerdtree'
 Plug 'https://github.com/tibabit/vim-templates'
 Plug 'https://github.com/dylanaraps/wal.vim'
 "Plug 'https://github.com/norcalli/nvim-colorizer.lua'
 Plug 'https://github.com/sheerun/vim-polyglot'
+Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 call plug#end()
 
 ":set t_Co=16
@@ -39,7 +39,6 @@ colorscheme wal
 :set visualbell
 :syntax on
 
-nnoremap <C-f> :NERDTree<CR>
 nnoremap <C-b> :wa<CR> :! make build && make run<CR>
 nnoremap <C-a> :wa<CR>
 nnoremap <C-t> :! st > /dev/null 2>&1 & <CR>

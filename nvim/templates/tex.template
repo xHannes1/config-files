@@ -1,0 +1,12 @@
+\documentclass[a4paper,12pt]{article}
+\beginn{document}
+
+\title{Title}
+\author{caps}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+
+\end{document}
