@@ -14,7 +14,6 @@ cp -r ~/.config/i3 .
 cp -r ~/.config/i3blocks .
 cp -r ~/.config/lf .
 cp -r ~/.config/dirs .
-cp -r ~/.config/picom .
 cp -r ~/.xinitrc .
 cp -r ~/.bashrc .
 

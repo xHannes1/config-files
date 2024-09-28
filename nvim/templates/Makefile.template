@@ -3,11 +3,3 @@
  * @created     : {{TODAY}}
  * @filename    : {{FILEE}}
  */
-
-#pragma once
-#ifndef {{MACRO_GUARD}}
-#define {{MACRO_GUARD}}
-
-
-
-#endif

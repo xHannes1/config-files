@@ -1,14 +1,14 @@
 let b:coc_diagnostic_disable=1
 let g:tmpl_search_paths = ['~/.config/nvim/templates']
-
+set nocompatible
 
 call plug#begin()
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/tibabit/vim-templates'
 Plug 'https://github.com/dylanaraps/wal.vim'
-"Plug 'https://github.com/norcalli/nvim-colorizer.lua'
 Plug 'https://github.com/sheerun/vim-polyglot'
-Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+Plug 'https://github.com/preservim/nerdtree'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 ":set t_Co=16
@@ -18,8 +18,8 @@ set notermguicolors
 set background=dark
 colorscheme wal
 
+:set encoding=utf-8
 :set number
-:set relativenumber
 :set autoindent
 :set smartindent
 :set noexpandtab
@@ -41,11 +41,19 @@ colorscheme wal
 
 nnoremap <C-b> :wa<CR> :! make build && make run<CR>
 nnoremap <C-a> :wa<CR>
+nnoremap <C-y> :mksession! s.vim<CR>
 nnoremap <C-t> :! st > /dev/null 2>&1 & <CR>
 nnoremap <C-p> :! zathura *.pdf &<CR> 
 nnoremap <C-o> :! pdflatex *.tex<CR> 
 nnoremap <C-s> :vsplit<CR>
 nnoremap <S-s> :split<CR>
+nnoremap <C-f> :NERDTreeToggle<CR>
+nnoremap <s-F> :NERDTreeFind<CR>
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
 nnoremap <F3> :set hlsearch!<CR>
 
 inoremap " ""<left>
