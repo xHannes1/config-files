@@ -9,12 +9,28 @@ set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
 set autoquit true
 
+#--------bookmarks-----------
+
+cmd m ${{
+	cd /media/
+	lf -remote "send $id cd \"/media/\""
+}}
+
+cmd h ${{
+	cd /media/
+	lf -remote "send $id cd \"/home/caps/\""
+}}
+
+#--------------------------
+
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
 	application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
-	image/*) setsid -f RawTherapee $f >/dev/null 2>&1 ;;
+	image/*) setsid -f RawTherapee.AppImage $f >/dev/null 2>&1 ;;
+	text/*) nvim $fx
     esac
 }}
+
 
 cmd mkdir $mkdir -p "$@"
 
@@ -49,8 +65,11 @@ cmd copyto ${{
 	notify-send "📋 File(s) copied." "File(s) copies to $dest."
 }}
 
+
+
 map <c-x> delete
 map <c-y> moveto
 map <c-c> copyto
 map <c-n> push :mkdir<space>""<left>
 map <enter> shell
+map <c-a> sync

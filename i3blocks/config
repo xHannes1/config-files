@@ -1,5 +1,5 @@
 [time]
-command=date +%T
+command=date -u +%T
 interval=60
 color=$bg
 

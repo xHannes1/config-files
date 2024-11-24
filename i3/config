@@ -10,9 +10,12 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 #NetworkManager
 exec --no-startup-id nm-applet
 #Spotify
-exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/spotify-launcher'
+exec --no-startup-id i3-msg 'exec --no-startup-id /usr/bin/spotify-launcher'
+exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id st -e lfub'
+exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id st'
 for_window [class="firefox"] move container to workspace number $ws3
-for_window [class="[FLOAT]"] exec i3-msg floating enable
+for_window [class="Spotify"] move container to workspace number $ws2
+for_window [class="[FLOAT]"] exec --no-startup-id i3-msg floating enable
 set $refresh_i3status killall -SIGUSR1 i3status
 
 #Volume Controll
@@ -20,12 +23,18 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym F10 exec --no-startup-id playerctl play-pause
+
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym F11 exec --no-startup-id playerctl next
+
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym F9 exec --no-startup-id playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -35,7 +44,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -66,10 +75,10 @@ bindsym $mod+b split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f exec firefox
-bindsym $mod+a exec aseprite
-bindsym $mod+s exec spotify-launcher
-bindsym $mod+x exec "st -e lfub &"
+bindsym $mod+f exec --no-startup-id firefox
+bindsym $mod+a exec --no-startup-id aseprite
+bindsym $mod+s exec --no-startup-id spotify-launcher
+bindsym $mod+x exec --no-startup-id st -e "lfub"
 
 
 # change container layout (stacked, tabbed, toggle split)
@@ -141,8 +150,10 @@ bindsym $mod+Escape mode "default"
 #PYWAL ENABLED THEME
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $fc i3wm.color15
+
 #class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused          $fc     $fc     $fg  $fc       $fc
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg

@@ -44,7 +44,7 @@ nnoremap <C-a> :wa<CR>
 nnoremap <C-y> :mksession! s.vim<CR>
 nnoremap <C-t> :! st > /dev/null 2>&1 & <CR>
 nnoremap <C-p> :! zathura *.pdf &<CR> 
-nnoremap <C-o> :! pdflatex *.tex<CR> 
+nnoremap <C-o> :wa<CR> :! pdflatex *.tex<CR> 
 nnoremap <C-s> :vsplit<CR>
 nnoremap <S-s> :split<CR>
 nnoremap <C-f> :NERDTreeToggle<CR>
@@ -55,6 +55,9 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 nnoremap <F3> :set hlsearch!<CR>
+
+au BufEnter,BufNew *.c nnoremap <silent> <s-Tab> :e %<.h<CR>
+au BufEnter,BufNew *.h nnoremap <silent> <s-Tab> :e %<.c<CR>
 
 inoremap " ""<left>
 inoremap ' ''<left>
