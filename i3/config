@@ -1,5 +1,6 @@
 set $mod Mod4
-font pango:monospace 10
+#font pango:monospace 10
+font pango:Roboto Mono, Medium Regular 10
 gaps inner 12
 gaps outer 1
 default_border pixel 4
@@ -7,14 +8,17 @@ hide_edge_borders vertical
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id picom 
 #NetworkManager
 exec --no-startup-id nm-applet
 #Spotify
 exec --no-startup-id i3-msg 'exec --no-startup-id /usr/bin/spotify-launcher'
-exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id st -e lfub'
+exec --no-startup-id i3-msg 'exec --no-startup-id /usr/bin/obsidian'
 exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id st'
+exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id st -e yazi'
 for_window [class="firefox"] move container to workspace number $ws3
 for_window [class="Spotify"] move container to workspace number $ws2
+for_window [class="obsidian"] move container to workspace number $ws2
 for_window [class="[FLOAT]"] exec --no-startup-id i3-msg floating enable
 set $refresh_i3status killall -SIGUSR1 i3status
 
@@ -140,10 +144,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 
-bindsym $mod+j resize shrink width 10 px or 10 ppt
-bindsym $mod+k resize grow width 10 px or 10 ppt
-bindsym $mod+h resize shrink height 10 px or 10 ppt
-bindsym $mod+l resize grow height 10 px or 10 ppt
+bindsym $mod+h resize shrink width 10 px or 10 ppt
+bindsym $mod+l resize grow width 10 px or 10 ppt
+bindsym $mod+k resize shrink height 10 px or 10 ppt
+bindsym $mod+j resize grow height 10 px or 10 ppt
 
 bindsym $mod+Escape mode "default"
 

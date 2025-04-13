@@ -1,4 +1,3 @@
-
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
@@ -26,7 +25,8 @@ cmd h ${{
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
 	application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
-	image/*) setsid -f RawTherapee.AppImage $f >/dev/null 2>&1 ;;
+	image/jpeg|raw) setsid -f RawTherapee.AppImage $f >/dev/null 2>&1 ;;
+	image/png) setsid -f feh $f >/dev/null 2>&1 ;;
 	text/*) nvim $fx
     esac
 }}
@@ -65,11 +65,14 @@ cmd copyto ${{
 	notify-send "📋 File(s) copied." "File(s) copies to $dest."
 }}
 
-
+cmd on-quit ${{
+	clear;
+	echo -n $PWD > $HOME/.lf_last_dir
+}}
 
 map <c-x> delete
 map <c-y> moveto
 map <c-c> copyto
 map <c-n> push :mkdir<space>""<left>
-map <enter> shell
+map <enter> push &st<space>&<enter>
 map <c-a> sync
