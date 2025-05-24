@@ -1,0 +1,22 @@
+[ram]
+command=free -m | grep Speicher | awk '{print $3}'
+interval=30
+label=🗃️
+color=$bg
+
+[time]
+command=date -u +%T
+interval=60
+label=🕗
+color=$bg
+
+[ip]
+command=ip a | grep -o -P '(?<=inet ).*(?= brd)'
+interval=once
+color=$bg
+
+[battery]
+command=acpi | grep -o -P '(?<=, ).*(?=%)' | sed 's/$/%/' 
+interval=60
+label=⚡
+color=$bg
