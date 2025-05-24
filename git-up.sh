@@ -12,9 +12,12 @@
 cp -r ~/.config/nvim .
 cp -r ~/.config/i3 .
 cp -r ~/.config/i3blocks .
-cp -r ~/.config/dirs .
 cp -r ~/.xinitrc .
 cp -r ~/.bashrc .
+cp -r ~/.suckless/st/config.def.h .
+cp -r ~/.suckless/dmenu/config.def.h .
+
+cp -r ~/Photos/wallpaper.jpg .
 
 git add .
 git commit -m "Update"
