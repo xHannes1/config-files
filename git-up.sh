@@ -14,8 +14,8 @@ cp -r ~/.config/i3 .
 cp -r ~/.config/i3blocks .
 cp -r ~/.xinitrc .
 cp -r ~/.bashrc .
-cp -r ~/.suckless/st/config.def.h .
-cp -r ~/.suckless/dmenu/config.def.h .
+cp -r ~/.suckless/st/config.def.h ./st/
+cp -r ~/.suckless/dmenu/config.def.h ./dmenu/
 
 cp -r ~/Photos/wallpaper.jpg .
 
