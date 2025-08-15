@@ -18,3 +18,8 @@ vim.keymap.set("i", "<C-w>", "<ESC>:split<CR>", { noremap = true, silent = true,
 vim.keymap.set("n", "<C-d>", ":vsplit<CR>", { noremap = true, silent = true, desc="Split vertical"})
 vim.keymap.set("i", "<C-d>", "<ESC>:vsplit<CR>", { noremap = true, silent = true, desc="Split vertical"})
 
+vim.keymap.set("n", "<C-b>", ":wa<CR> :! make build && make run<CR>", { noremap = true, silent = true, desc="make"})
+vim.keymap.set("i", "<C-b>", "<ESC>:wa<CR> :! make build && make run<CR>", { noremap = true, silent = true, desc="make"})
+
+vim.keymap.set("n", "<C-s>", ":mksession! s.vim<CR>", { noremap = true, silent = true, desc="make"})
+vim.keymap.set("i", "<C-s>", "<ESC>:mksession! s.vim<CR>", { noremap = true, silent = true, desc="make"})
